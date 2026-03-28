@@ -6,6 +6,7 @@ Part of the [Thread Suite](https://github.com/eugene001dayne) — open-source re
 
 [![PyPI version](https://badge.fury.io/py/promptthread.svg)](https://pypi.org/project/promptthread/)
 [![npm version](https://badge.fury.io/js/promptthread.svg)](https://www.npmjs.com/package/promptthread)
+[![Live Dashboard](https://img.shields.io/badge/dashboard-live-00ff88)](https://prompt-thread-dashboard.lovable.app)
 
 ---
 
@@ -107,6 +108,8 @@ console.log(await pt.getStats(prompt.id));
 ## API Reference
 
 **Base URL:** `https://prompt-thread.onrender.com`
+
+**Live Dashboard:** https://prompt-thread-dashboard.lovable.app
 
 **Interactive docs:** `https://prompt-thread.onrender.com/docs`
 
