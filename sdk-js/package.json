@@ -1,0 +1,28 @@
+{
+  "name": "promptthread",
+  "version": "0.1.0",
+  "description": "Git for prompts. Version control and performance tracking for AI prompts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "prompt",
+    "versioning",
+    "ai",
+    "agents",
+    "llm",
+    "testing",
+    "performance"
+  ],
+  "author": "Eugene Mawuli",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eugene001dayne/prompt-thread"
+  },
+  "homepage": "https://github.com/eugene001dayne/prompt-thread#readme"
+}
