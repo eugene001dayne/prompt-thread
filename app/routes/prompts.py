@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from app.models import PromptCreate, PromptUpdate
 from app.database import get_client
+from app.routes.golden import run_golden_set_on_update
 from datetime import datetime, timezone
 
 router = APIRouter()
@@ -71,7 +72,14 @@ def update_prompt(prompt_id: str, payload: PromptUpdate):
             "version": new_version,
             "updated_at": now
         })
-    return r.json()[0]
+
+    golden_notice = run_golden_set_on_update(prompt_id)
+
+    response = r.json()[0]
+    if golden_notice:
+        response["golden_set_notice"] = golden_notice
+
+    return response
 
 
 @router.get("/{prompt_id}/history")
