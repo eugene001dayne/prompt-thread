@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from app.models import RunCreate
 from app.database import get_client
+from app.routes.alerts import check_and_fire_alerts
 from datetime import datetime, timezone
 
 router = APIRouter()
@@ -24,8 +25,10 @@ def log_run(payload: RunCreate):
         r = client.post("/runs", json=data)
     if r.status_code not in (200, 201):
         raise HTTPException(status_code=500, detail=r.text)
-    return r.json()[0]
 
+    check_and_fire_alerts(payload.prompt_id, payload.prompt_version)
+
+    return r.json()[0]
 
 @router.get("/")
 def list_runs():
