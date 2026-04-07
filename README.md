@@ -1,41 +1,41 @@
 # PromptThread
 
-**Git for prompts. Version control and performance tracking for AI prompts.**
+**Git for prompts, but actually for prompts.** Version control + performance tracking, because guessing doesn't work.
 
-Part of the [Thread Suite](https://github.com/eugene001dayne) — open-source reliability tools for AI agents.
-
-[![PyPI version](https://badge.fury.io/py/promptthread.svg)](https://pypi.org/project/promptthread/)
-[![npm version](https://badge.fury.io/js/promptthread.svg)](https://www.npmjs.com/package/promptthread)
-[![Live Dashboard](https://img.shields.io/badge/dashboard-live-00ff88)](https://prompt-thread-dashboard.lovable.app)
+Part of the [Thread Suite](https://github.com/eugene001dayne)  open-source tools to stop your AI agents from failing quietly.
 
 ---
 
-## The Problem
+## Here's the thing
 
-When a developer changes a prompt, what broke? What improved? Which version performed best?
+You change a prompt. Maybe it's a tiny tweak. Maybe it's a full rewrite.
 
-Right now there's no clean answer. Developers change prompts and hope for the best.
+What broke? What got better? Which version actually worked best?
 
-**PromptThread fixes that.**
+Right now? Nobody knows. You just push the change and hope.
 
----
-
-## What It Does
-
-- **Version control** — every prompt change is saved, like Git commits
-- **Performance tracking** — pass rate, latency, and cost per version
-- **A/B comparison** — which version actually performed better?
-- **Rollback** — instantly restore any previous version
-- **Diff view** — see exactly what changed between versions
+PromptThread fixes that. It's like Git, but for prompts plus it tracks how each version actually performs.
 
 ---
 
-## Quick Start
+## What it does (plain English)
+
+- **Saves every version** — change a prompt, it's committed. Like Git.
+- **Tracks performance** — pass rate, latency, cost per version.
+- **Compares versions** — which one actually did better?
+- **Rollback** — restore any old version instantly.
+- **Shows diffs** — exactly what changed between versions.
+
+---
+
+## Quick start
 
 ### Python
+
 ```bash
 pip install promptthread
 ```
+
 ```python
 from promptthread import PromptThread
 
@@ -65,20 +65,22 @@ pt.log_run(
 # Get stats
 print(pt.get_stats(prompt_id))
 
-# Update prompt — auto-increments version
+# Update prompt — version increments automatically
 pt.update_prompt(prompt_id, "You are a summarizer. Return a 2-sentence summary.")
 
 # See what changed
 print(pt.diff(prompt_id, 1, 2))
 
-# Roll back
+# Roll back to version 1
 pt.rollback(prompt_id, version=1)
 ```
 
 ### JavaScript
+
 ```bash
 npm install promptthread
 ```
+
 ```javascript
 const PromptThread = require("promptthread");
 
@@ -105,7 +107,7 @@ console.log(await pt.getStats(prompt.id));
 
 ---
 
-## API Reference
+## API reference
 
 **Base URL:** `https://prompt-thread.onrender.com`
 
@@ -138,17 +140,19 @@ console.log(await pt.getStats(prompt.id));
 
 ## The Thread Suite
 
-Three open-source tools that together form the reliability layer for AI agents.
+Three open-source tools that together give you a reliability layer for AI agents.
 
 | Tool | What it does |
 |------|-------------|
 | [Iron-Thread](https://github.com/eugene001dayne/iron-thread) | Validates AI output structure before it hits your database |
 | [TestThread](https://github.com/eugene001dayne/test-thread) | Tests whether your agent behaves correctly across runs |
 | **PromptThread** | Versions and tracks prompt performance over time |
+| [ChainThread](https://github.com/eugene001dayne/chain-thread) | agent handoff protocol and verification infrastructure. |
 
 ---
 
-## Self-Hosting
+## Self-hosting
+
 ```bash
 git clone https://github.com/eugene001dayne/prompt-thread.git
 cd prompt-thread
@@ -162,4 +166,8 @@ python -m uvicorn app.main:app --reload
 
 ## License
 
-MIT
+MIT. Use it, break it, send a PR.
+
+---
+
+Built by [Eugene Dayne Mawuli](https://github.com/eugene001dayne). If you've ever changed a prompt and had no idea if it helped or hurt, this is for you.
