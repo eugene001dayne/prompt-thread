@@ -1,6 +1,6 @@
 {
   "name": "promptthread",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "description": "Git for prompts. Version control and performance tracking for AI prompts.",
   "main": "index.js",
   "scripts": {

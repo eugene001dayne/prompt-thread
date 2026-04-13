@@ -85,3 +85,32 @@ class PromptThread:
         r = self.client.get(f"/runs/compare/{prompt_id}/{version_a}/{version_b}")
         r.raise_for_status()
         return r.json()
+
+    # --- Drift ---
+
+    def create_drift_anchor(self, prompt_id: str, name: str, input: str,
+                             expected_contains: str, model_endpoint: str):
+        r = self.client.post("/drift/anchors", json={
+            "prompt_id": prompt_id,
+            "name": name,
+            "input": input,
+            "expected_contains": expected_contains,
+            "model_endpoint": model_endpoint
+        })
+        r.raise_for_status()
+        return r.json()
+
+    def list_drift_anchors(self, prompt_id: str):
+        r = self.client.get(f"/drift/anchors/{prompt_id}")
+        r.raise_for_status()
+        return r.json()
+
+    def run_drift_check(self, prompt_id: str):
+        r = self.client.post(f"/drift/anchors/{prompt_id}/check")
+        r.raise_for_status()
+        return r.json()
+
+    def drift_history(self, prompt_id: str):
+        r = self.client.get(f"/drift/{prompt_id}/history")
+        r.raise_for_status()
+        return r.json()

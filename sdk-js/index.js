@@ -70,6 +70,29 @@ class PromptThread {
   compare(promptId, versionA, versionB) {
     return this._request("GET", `/runs/compare/${promptId}/${versionA}/${versionB}`);
   }
+
+  // --- Drift ---
+  createDriftAnchor(promptId, name, input, expectedContains, modelEndpoint) {
+    return this._request("POST", "/drift/anchors", {
+      prompt_id: promptId,
+      name,
+      input,
+      expected_contains: expectedContains,
+      model_endpoint: modelEndpoint
+    });
+  }
+
+  listDriftAnchors(promptId) {
+    return this._request("GET", `/drift/anchors/${promptId}`);
+  }
+
+  runDriftCheck(promptId) {
+    return this._request("POST", `/drift/anchors/${promptId}/check`);
+  }
+
+  driftHistory(promptId) {
+    return this._request("GET", `/drift/${promptId}/history`);
+  }
 }
 
 module.exports = PromptThread;
