@@ -4,6 +4,8 @@
 
 Part of the [Thread Suite](https://github.com/eugene001dayne)  open-source tools to stop your AI agents from failing quietly.
 
+(Learn more at threadsuite.netlify.app)
+
 ---
 
 ## Here's the thing
